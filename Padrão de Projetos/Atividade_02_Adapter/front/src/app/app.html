@@ -1,0 +1,98 @@
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-title">Simulador de Roteador - TechSeven</div>
+</nav>
+
+<!-- Área de seleção -->
+<section class="selecao-componentes">
+  <h2>Selecione os Componentes</h2>
+  <div class="input-modelo">
+    <label for="modeloRoteador">Nome do Roteador (Modelo)</label>
+    <input
+      id="modeloRoteador"
+      type="text"
+      [(ngModel)]="modeloRoteador"
+      placeholder="Digite o modelo do roteador"
+    />
+  </div>
+  <div class="dropdowns">
+    <div class="dropdown">
+      <label>Modelo de Antena</label>
+      <select [(ngModel)]="antenaSelecionada">
+        <option *ngFor="let antena of antenas" [ngValue]="antena">
+          {{ antena.modelo }}
+        </option>
+      </select>
+    </div>
+
+    <div class="dropdown">
+      <label>Modelo do Chipset</label>
+      <select [(ngModel)]="chipsetSelecionado">
+        <option *ngFor="let chipset of chipsets" [ngValue]="chipset">
+          {{ chipset.modelo }}
+        </option>
+      </select>
+    </div>
+
+    <div class="dropdown">
+      <label>Tipo de Fonte</label>
+      <select [(ngModel)]="fonteSelecionada">
+        <option *ngFor="let fonte of fontes" [ngValue]="fonte">
+          {{ fonte.fabricante }}
+        </option>
+      </select>
+    </div>
+
+    <div class="dropdown">
+      <label>Modelo da Placa</label>
+      <select [(ngModel)]="placaSelecionada">
+        <option *ngFor="let placa of placas" [ngValue]="placa">
+          {{ placa.modelo }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <button class="btn-montar" (click)="montarRoteador()" [disabled]="!podeMontar()">Montar Roteador</button>
+</section>
+
+<!-- Exibição do roteador montado -->
+<section *ngIf="roteadorMontado" class="roteador-montado">
+  <h2>Roteador Montado</h2>
+
+  <div class="resumo-componentes">
+    <table>
+      <tr>
+        <th>Modelo</th>
+        <td>{{ roteadorMontado.modeloRoteador }}</td>
+      </tr>
+      <tr>
+        <th>Fabricante</th>
+        <td>{{ roteadorMontado.fabricante }}</td>
+      </tr>
+      <tr>
+        <th>Antena</th>
+        <td>{{ roteadorMontado.antena.modelo }} | {{ roteadorMontado.antena.tipoConector }}</td>
+      </tr>
+      <tr>
+        <th>Chipset</th>
+        <td>{{ roteadorMontado.chipset.modelo }} | {{ roteadorMontado.chipset.tipoConector }}</td>
+      </tr>
+      <tr>
+        <th>Fonte</th>
+        <td>{{ roteadorMontado.fonteAlimentacao.fabricante }} | {{ roteadorMontado.fonteAlimentacao.tipoConector }}</td>
+      </tr>
+      <tr>
+        <th>Placa</th>
+        <td>{{ roteadorMontado.placaDeRede.modelo }}</td>
+      </tr>
+    </table>
+  </div>
+  <button class="btn-diagnostico" (click)="gerarDiagnostico()">Gerar Diagnóstico</button>
+</section>
+
+<!-- Diagnóstico -->
+<section *ngIf="diagnosticoGerado" class="diagnostico">
+  <h2>Diagnóstico do Roteador</h2>
+  <pre>{{ diagnosticoTexto }}</pre>
+</section>
