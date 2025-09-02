@@ -1,0 +1,80 @@
+<nav>
+  <h1 class="nav-title">Leitura de dados da F1</h1>
+</nav>
+
+<div class="main-container">
+  <div class="controls-line">
+    <div class="control-group">
+      <label for="file-upload" class="btn btn-primary">
+        Escolher arquivo
+      </label>
+      <input id="file-upload" type="file" (change)="onFileSelected($event)">
+      <span *ngIf="fileName" class="file-name">Arquivo selecionado: {{ fileName }}</span>
+    </div>
+
+    <div class="control-group">
+      <select [(ngModel)]="selectedOption">
+        <option value="" disabled>Selecione uma opção</option>
+        <option value="linkedlist">LinkedList</option>
+        <option value="hashmap">HashMap</option>
+        <option value="hashset">HashSet</option>
+        <option value="treeset">TreeSet</option>
+        <option value="fila">Fila</option>
+      </select>
+
+      <button (click)="lerDados()" class="btn btn-success">
+        Fazer Leitura
+      </button>
+    </div>
+  </div>
+
+  <div class="controls-line">
+    <div class="control-group">
+      <label>Ordenar por:</label>
+      <select [(ngModel)]="sortColumn" (change)="sortPilotos()">
+        <option value="nenhuma">Nenhuma</option>
+        <option value="matricula">Matrícula</option>
+        <option value="nome">Nome</option>
+        <option value="nacionalidade">Nacionalidade</option>
+        <option value="idade">Idade</option>
+        <option value="equipe">Equipe</option>
+        <option value="motor">Motor</option>
+        <option value="pontos">Pontos</option>
+      </select>
+      <button (click)="toggleSortDirection()" [disabled]="sortColumn === 'nenhuma'" class="btn btn-sort">
+        {{ sortDirection === 'asc' ? '↓' : '↑' }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="message" class="message-box">
+    {{ message }}
+  </div>
+
+  <div *ngIf="pilotos.length > 0" class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Matrícula</th>
+          <th>Nome</th>
+          <th>Nacionalidade</th>
+          <th>Idade</th>
+          <th>Equipe</th>
+          <th>Motor</th>
+          <th>Pontos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let piloto of pilotos">
+          <td>{{ piloto.matricula }}</td>
+          <td>{{ piloto.nome }}</td>
+          <td>{{ piloto.nacionalidade }}</td>
+          <td>{{ piloto.idade }}</td>
+          <td>{{ piloto.equipe }}</td>
+          <td>{{ piloto.motor }}</td>
+          <td>{{ piloto.pontos }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
