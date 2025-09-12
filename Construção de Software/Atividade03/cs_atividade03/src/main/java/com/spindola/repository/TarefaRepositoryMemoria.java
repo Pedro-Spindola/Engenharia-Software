@@ -22,6 +22,12 @@ public class TarefaRepositoryMemoria implements ITarefaRepository {
         return new ArrayList<>(tarefas.values());
     }
 
+     @Override
+     public boolean removerTarefa(Integer id) {
+         tarefas.remove(id);
+         return true;
+     }
+
     @Override
     public List<Tarefa> buscarPorTitulo(String titulo) {
         return tarefas.values().stream()

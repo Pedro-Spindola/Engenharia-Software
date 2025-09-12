@@ -11,4 +11,5 @@ public interface ITarefaRepository {
     List<Tarefa> buscarPorTitulo(String titulo);
     Optional<Tarefa> buscarPorId(Integer id);
     boolean atualizarTarefa(Tarefa tarefa);
+    boolean removerTarefa(Integer id);
 }
