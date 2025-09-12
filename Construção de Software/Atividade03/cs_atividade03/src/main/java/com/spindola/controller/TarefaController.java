@@ -83,7 +83,7 @@ public class TarefaController {
             System.out.println("Prioridade: " + t.getPrioridade());
             System.out.println("Data de Criação: " + t.getDataCriacao().format(formatador));
             System.out.println("Data de Conclusão: " + (t.getDataConclusao() != null ? t.getDataConclusao().format(formatador) : "Não concluída"));
-            System.out.println("-------------------------");
+            System.out.println("-".repeat(40));
         }
     }
 
