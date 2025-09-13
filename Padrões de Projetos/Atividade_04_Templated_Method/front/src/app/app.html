@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>Relatório de Alunos</h1>
+
+  <div class="ordenacao-container">
+    <label for="ordenacao">Ordenar por:</label>
+    <select id="ordenacao" (change)="onOrdenacaoChange($event)" [(ngModel)]="ordenacaoSelecionada">
+      <option value="nome">Nome</option>
+      <option value="sobrenome">Sobrenome</option>
+      <option value="cursoEnfase">Curso & Enfase</option>
+      <option value="cursoNome">Curso & Nome</option>
+      <option value="enfaseCurso">Enfase & Curso</option>
+      <option value="enfaseNome">Enfase & Nome</option>
+      <option value="situacaoNome">Situacao & Nome</option>
+    </select>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Curso</th>
+        <th>Situação</th>
+        <th>Ênfase</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let aluno of alunos">
+        <td>{{ aluno.nome }}</td>
+        <td>{{ aluno.curso }}</td>
+        <td>{{ aluno.situacao }}</td>
+        <td>{{ aluno.enfase }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
