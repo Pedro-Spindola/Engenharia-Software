@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Faça seu Pedido</h2>
+
+  <div class="form-group">
+    <label for="cafe-select">Selecione o Café:</label>
+    <select id="cafe-select" [(ngModel)]="tipoSelecionado">
+      <option *ngFor="let tipo of tiposCafe" [value]="tipo">{{ tipo | titlecase }}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Adicionais:</label>
+    <div class="checkbox-group">
+      <label *ngFor="let adicional of adicionais">
+        <input type="checkbox" (change)="onCheckboxChange(adicional, $event)">
+        {{ adicional | titlecase }}
+      </label>
+    </div>
+  </div>
+
+  <button (click)="processarPedido()">
+    Processar Pedido
+  </button>
+
+  <hr>
+
+  <div *ngIf="pedidoResult" class="result-box">
+    <h3>Pedido Realizado!</h3>
+    <p><strong>Descrição:</strong> {{ pedidoResult.descricao }}</p>
+    <p><strong>Valor:</strong> R$ {{ pedidoResult.custo | number:'1.2-2' }}</p>
+  </div>
+
+</div>

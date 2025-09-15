@@ -1,0 +1,80 @@
+// Variáveis para cores e espaçamento
+$primary-color: #007bff;
+$primary-hover-color: #0056b3;
+$success-border-color: #28a745;
+$success-bg-color: #d4edda;
+$success-text-color: #155724;
+$border-color: #ccc;
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+$default-padding: 8px;
+$default-border-radius: 4px;
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid $border-color;
+  border-radius: $default-border-radius;
+  font-family: Arial, sans-serif;
+  box-shadow: $box-shadow;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+select {
+  width: 100%;
+  padding: $default-padding;
+  border-radius: $default-border-radius;
+  border: 1px solid $border-color;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+
+  input[type="checkbox"] {
+    margin-right: 5px;
+  }
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: $default-border-radius;
+  cursor: pointer;
+  font-size: 16px;
+
+  &:hover {
+    background-color: $primary-hover-color;
+  }
+}
+
+.result-box {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid $success-border-color;
+  border-radius: $default-border-radius;
+  background-color: $success-bg-color;
+
+  h3 {
+    color: $success-text-color;
+  }
+}
+
+hr {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-color: #eee;
+}
