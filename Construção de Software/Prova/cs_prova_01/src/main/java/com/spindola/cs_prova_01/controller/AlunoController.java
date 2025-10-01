@@ -1,9 +1,18 @@
 package com.spindola.cs_prova_01.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spindola.cs_prova_01.dto.AlunoRequestDTO;
+import com.spindola.cs_prova_01.dto.AlunoResponseDTO;
 import com.spindola.cs_prova_01.service.AlunoService;
 
 @RestController
@@ -12,34 +21,24 @@ public class AlunoController {
     @Autowired
     AlunoService alunoService;
 
-    /* 
-    
-    FAZER ESSE PADRÃO
-
     @GetMapping("/{id}")
-    public Produto findById(Long id){
-        return produtoService.findById(id);
+    public AlunoResponseDTO buscarPorId(@PathVariable Long id){
+        return alunoService.buscarPorId(id);
     }
 
     @GetMapping
-    public List<Produto> findAll(){
-        return produtoService.findAll();
+    public List<AlunoResponseDTO> buscarTodos(){
+        return alunoService.buscarTodos();
     }
 
     @PostMapping
-    public Produto save(@RequestBody Produto usuario){
-        return produtoService.save(usuario);
+    public AlunoResponseDTO registrarAluno(@RequestBody AlunoRequestDTO alunoRequestDTO){
+        return alunoService.registrarAluno(alunoRequestDTO);
     }
 
     @PutMapping
-    public Produto update(@RequestBody Produto usuario){
-        return produtoService.update(usuario);
+    public AlunoResponseDTO alterarRegistroAluno(@RequestBody AlunoRequestDTO alunoRequestDTO){
+        return alunoService.alterarRegistroAluno(alunoRequestDTO);
     }
-
-    @DeleteMapping
-    public void delete(@RequestBody Produto usuario){
-        produtoService.delete(usuario);
-    } 
-    */
     
 }
