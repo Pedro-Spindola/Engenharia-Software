@@ -15,22 +15,27 @@ public class PlanoService {
     PlanoRepository planoRepository;
 
     public PlanoResponseDTO buscarPlanoId(Long id){
+        System.out.println("Executo buscarPlanoId no PlanoService");
         return null;
     }
 
     public List<PlanoResponseDTO> listarPlanos(){
+        System.out.println("Executo listarPlanos no PlanoService");
         return null;
     } 
 
     public PlanoResponseDTO registrarPlano(PlanoRequestDTO planoRequestDTO){
+        System.out.println("Executo registrarPlano no PlanoService");
         return null;
     }
 
     public PlanoResponseDTO atualizarPlano(PlanoRequestDTO planoRequestDTO){
+        System.out.println("Executo atualizarPlano no PlanoService");
         return null;
     }
 
     public boolean deletarPlano(Long id){
+        System.out.println("Executo deletarPlano no PlanoService");
         return false;
     }
 }

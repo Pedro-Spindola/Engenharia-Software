@@ -15,22 +15,27 @@ public class AlunoService {
     AlunoRepository alunoRepository;
 
     public AlunoResponseDTO buscarPorId(Long id){
+        System.out.println("Executo buscarPorId no AlunoService");
         return null;
     }
 
     public List<AlunoResponseDTO> buscarTodos(){
+        System.out.println("Executo buscarTodos no AlunoService");
         return null;
     }
 
     public AlunoResponseDTO registrarAluno(AlunoRequestDTO alunoRequestDTO){
+        System.out.println("Executo registrarAluno no AlunoService");
         return null;
     }
 
     public AlunoResponseDTO alterarRegistroAluno(AlunoRequestDTO alunoRequestDTO){
+        System.out.println("Executo alterarRegistroAluno no AlunoService");
         return null;
     }
 
     public Boolean desativarAluno(Long id){
+        System.out.println("Executo desativarAluno no AlunoService");
         return null;
     }
 }

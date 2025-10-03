@@ -15,10 +15,12 @@ public class PagamentoService {
     PagamentoRepository pagamentoRepository;
 
     public PagamentoResponseDTO registrarPagamento(PagamentoRequestDTO pagamentoRequestDTO){
+        System.out.println("Executo registrarPagamento no PagamentoService");
         return null;
     }
 
     public List<PagamentoResponseDTO> buscarListPagamentoAluno(Long id){
+        System.out.println("Executo buscarListPagamentoAluno no PagamentoService");
         return null;
     }
 

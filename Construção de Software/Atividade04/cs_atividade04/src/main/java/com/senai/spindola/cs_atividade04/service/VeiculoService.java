@@ -7,6 +7,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.senai.spindola.cs_atividade04.dto.VeiculoRequestDTO;
+import com.senai.spindola.cs_atividade04.mapper.VeiculoMapper;
+import com.senai.spindola.cs_atividade04.model.INotificacao;
 import com.senai.spindola.cs_atividade04.model.Veiculo;
 import com.senai.spindola.cs_atividade04.repository.VeiculoRepository;
 
@@ -15,8 +18,15 @@ public class VeiculoService {
 
     @Autowired
     private VeiculoRepository repository;
+    @Autowired
+    private List<INotificacao> notificacao;
+    @Autowired
+    private VeiculoMapper veiculoMapper;
 
-    public Veiculo registrarEntrada(Veiculo veiculo){
+    public Veiculo registrarEntrada(VeiculoRequestDTO veiculoDTO){
+
+        Veiculo veiculo = veiculoMapper.toEntity(veiculoDTO);
+
         if(!verificarVagasDisponivel()){
 
         }
@@ -28,6 +38,9 @@ public class VeiculoService {
         }
         veiculo.setAtivo(true);
         veiculo.setDataEntrada(LocalDateTime.now());
+
+        notificacao.forEach(n -> n.mensagemEntrada("Notificação enviada: ", veiculo));
+
         return repository.save(veiculo);
         // Verificar se tem vagas disponivel.
         // Verificar se não tem um veiculos com a mesma placa já estacionado.
@@ -69,7 +82,7 @@ public class VeiculoService {
 
 
     public List<Veiculo> listarEstacionados(){
-        return repository.findByAtivo();
+        return repository.findByAtivo(true);
     }
 
     public Veiculo findByPlaca(String placa) {
@@ -85,7 +98,7 @@ public class VeiculoService {
         LocalDateTime inicio = date.toLocalDate().atStartOfDay();
         LocalDateTime fim = inicio.plusDays(1).minusSeconds(1);
 
-        List<Veiculo> veiculos = repository.findByDataFaturamento(inicio, fim);
+        List<Veiculo> veiculos = repository.findByDataSaidaBetween(inicio, fim);
 
         long quantidade = veiculos.size();
         float total = (float) veiculos.stream().mapToDouble(v -> v.getValorPago()).sum();

@@ -33,19 +33,15 @@ public class CafeController {
             String tipoString = (String) pedido.get("tipo");
             List<String> adicionaisStrings = (List<String>) pedido.get("adicionais");
 
-            // Converte a string do tipo de café para o Enum correspondente
             TipoCafe tipoEnum = TipoCafe.valueOf(tipoString.toUpperCase());
 
-            // Converte a lista de strings de adicionais para uma lista de Enums
             List<TipoAdicionais> adicionaisEnums = adicionaisStrings.stream().map(adicional -> TipoAdicionais.valueOf(adicional.toUpperCase())).collect(Collectors.toList());
 
-            // Chama o Service com os tipos de Enum
             ICafe cafeFinal = cafeService.processarPedido(tipoEnum, adicionaisEnums);
             
             return ResponseEntity.ok(cafeFinal);
 
         } catch (IllegalArgumentException e) {
-            // Se a conversão falhar (tipo ou adicional inválido), retorna um erro 400
             String mensagemErro = "Valores de entrada inválidos. Por favor, verifique o tipo de café ou os adicionais.";
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(mensagemErro);
         }

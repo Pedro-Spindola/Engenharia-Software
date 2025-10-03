@@ -12,6 +12,6 @@ import com.senai.spindola.cs_atividade04.model.Veiculo;
 @Repository
 public interface VeiculoRepository extends JpaRepository<Veiculo, Long> {
     Optional<Veiculo> findByPlaca(String placa);
-    List<Veiculo> findByAtivo();
-    List<Veiculo> findByDataFaturamento(LocalDateTime inicio, LocalDateTime fim);
+    List<Veiculo> findByAtivo(boolean ativo);
+    List<Veiculo> findByDataSaidaBetween(LocalDateTime inicio, LocalDateTime fim);
 }

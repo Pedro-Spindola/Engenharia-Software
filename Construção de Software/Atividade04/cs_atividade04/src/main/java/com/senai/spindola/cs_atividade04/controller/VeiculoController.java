@@ -14,11 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.senai.spindola.cs_atividade04.dto.VeiculoRequestDTO;
 import com.senai.spindola.cs_atividade04.model.Veiculo;
 import com.senai.spindola.cs_atividade04.service.VeiculoService;
 
 @RestController
-@RequestMapping("api/veiculos")
+@RequestMapping("api/v1/veiculos")
 public class VeiculoController {
 
     @Autowired
@@ -46,8 +47,8 @@ public class VeiculoController {
     }
 
     @PostMapping(value = "/entrada")
-    public Veiculo salvaEntrada(@RequestBody Veiculo veiculo){
-        return this.service.registrarEntrada(veiculo);
+    public Veiculo salvaEntrada(@RequestBody VeiculoRequestDTO veiculoRequestDTO){
+        return this.service.registrarEntrada(veiculoRequestDTO);
     }
 
     @PutMapping(value = "/saida/{id}")

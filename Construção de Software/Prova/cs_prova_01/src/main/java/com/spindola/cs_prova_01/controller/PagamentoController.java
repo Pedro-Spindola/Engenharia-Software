@@ -21,11 +21,13 @@ public class PagamentoController {
 
     @GetMapping
     public PagamentoResponseDTO registrarPagamento(@RequestBody PagamentoRequestDTO pagamentoRequestDTO){
+        System.out.println("Executo registrarPagamento PagamentoController");
         return pagamentoService.registrarPagamento(pagamentoRequestDTO);
     }
 
     @GetMapping("/{id}")
     public List<PagamentoResponseDTO> buscarPorIdAluno(@PathVariable Long id){
+        System.out.println("Executo buscarPorIdAluno PagamentoController");
         return pagamentoService.buscarListPagamentoAluno(id);
     }
 }

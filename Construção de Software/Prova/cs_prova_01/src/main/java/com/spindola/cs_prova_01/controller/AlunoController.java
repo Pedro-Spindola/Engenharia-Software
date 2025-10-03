@@ -23,21 +23,25 @@ public class AlunoController {
 
     @GetMapping("/{id}")
     public AlunoResponseDTO buscarPorId(@PathVariable Long id){
+        System.out.println("Executo buscarPorId no AlunoController");
         return alunoService.buscarPorId(id);
     }
 
     @GetMapping
     public List<AlunoResponseDTO> buscarTodos(){
+        System.out.println("Executo buscarTodos no AlunoController");
         return alunoService.buscarTodos();
     }
 
     @PostMapping
     public AlunoResponseDTO registrarAluno(@RequestBody AlunoRequestDTO alunoRequestDTO){
+        System.out.println("Executo registrarAluno no AlunoController");
         return alunoService.registrarAluno(alunoRequestDTO);
     }
 
     @PutMapping
     public AlunoResponseDTO alterarRegistroAluno(@RequestBody AlunoRequestDTO alunoRequestDTO){
+        System.out.println("Executo alterarRegistroAluno no AlunoController");
         return alunoService.alterarRegistroAluno(alunoRequestDTO);
     }
     

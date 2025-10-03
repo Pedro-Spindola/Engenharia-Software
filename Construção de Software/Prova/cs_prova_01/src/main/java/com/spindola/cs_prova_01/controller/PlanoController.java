@@ -24,26 +24,31 @@ public class PlanoController {
 
     @GetMapping("/{id}")
     public PlanoResponseDTO buscarPlanoId(@PathVariable Long id){
+        System.out.println("Executo buscarPlanoId no PlanoController");
         return planoService.buscarPlanoId(id);
     }
 
     @GetMapping
     public List<PlanoResponseDTO> listarPlanos(){
+        System.out.println("Executo listarPlanos no PlanoController");
         return planoService.listarPlanos();
     }
 
     @PostMapping
     public PlanoResponseDTO registrarPlano(@RequestBody PlanoRequestDTO planoRequestDTO){
+        System.out.println("Executo registrarPlano no PlanoController");
         return planoService.registrarPlano(planoRequestDTO);
     }
 
     @PutMapping
     public PlanoResponseDTO atualizarPlano(@RequestBody PlanoRequestDTO planoRequestDTO){
+        System.out.println("Executo atualizarPlano no PlanoController");
         return planoService.atualizarPlano(planoRequestDTO);
     }
     
     @DeleteMapping("/deletar/{id}")
     public Boolean deletarPlano(@RequestBody Long id){
+        System.out.println("Executo deletarPlano no PlanoController");
         return planoService.deletarPlano(id);
     }
 }

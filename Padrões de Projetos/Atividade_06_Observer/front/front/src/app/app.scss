@@ -1,0 +1,71 @@
+/* Container geral */
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  min-height: 100vh;
+}
+
+/* Título principal */
+h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Botões */
+button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Seção de mensagens */
+h3 {
+  margin-top: 2rem;
+  color: #555;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  width: 80%;
+  max-width: 600px;
+}
+
+li {
+  background-color: #fff;
+  border-left: 5px solid #4caf50;
+  margin-bottom: 0.5rem;
+  padding: 0.7rem 1rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  font-size: 0.95rem;
+}
+
+/* Eventos e usuários (caso queira mostrar listas separadas) */
+.events-list, .users-list {
+  margin-top: 1rem;
+  width: 80%;
+  max-width: 600px;
+}
+
+.events-list li {
+  border-left-color: #2196f3;
+}
+
+.users-list li {
+  border-left-color: #ff9800;
+}

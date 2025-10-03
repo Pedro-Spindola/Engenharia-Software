@@ -95,8 +95,5 @@ public class Veiculo {
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
-    }
-
-    
-    
+    }    
 }

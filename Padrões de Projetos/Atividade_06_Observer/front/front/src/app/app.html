@@ -1,0 +1,11 @@
+<!-- dashboard.component.html -->
+<div>
+  <h2>Fanzone Observer Demo</h2>
+  
+  <button (click)="pularDia()">Avançar Dia</button>
+
+  <h3>Mensagens:</h3>
+  <ul>
+    <li *ngFor="let msg of mensagens">{{ msg }}</li>
+  </ul>
+</div>
