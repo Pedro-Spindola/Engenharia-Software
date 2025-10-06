@@ -1,7 +1,7 @@
 package com.spindola.cs_prova_01.model;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 import com.spindola.cs_prova_01.model.enums.FormaPagamento;
 import com.spindola.cs_prova_01.model.enums.StatusPagamento;
@@ -21,7 +21,7 @@ public class Pagamento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Date data_pagamento;
+    private LocalDate data_pagamento;
     private BigDecimal valorPago;
     @Column(nullable = false)
     private StatusPagamento status;
@@ -41,11 +41,11 @@ public class Pagamento {
         this.id = id;
     }
 
-    public Date getData_pagamento() {
+    public LocalDate getData_pagamento() {
         return data_pagamento;
     }
 
-    public void setData_pagamento(Date data_pagamento) {
+    public void setData_pagamento(LocalDate data_pagamento) {
         this.data_pagamento = data_pagamento;
     }
 

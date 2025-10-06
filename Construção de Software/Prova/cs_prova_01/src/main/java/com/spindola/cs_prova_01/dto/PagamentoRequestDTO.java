@@ -1,5 +1,12 @@
 package com.spindola.cs_prova_01.dto;
 
-public record PagamentoRequestDTO(
+import java.math.BigDecimal;
 
+import com.spindola.cs_prova_01.model.enums.FormaPagamento;
+
+public record PagamentoRequestDTO(
+    Long id,
+    BigDecimal valor,
+    FormaPagamento formaPagamento,
+    Long aluno
 ) {}

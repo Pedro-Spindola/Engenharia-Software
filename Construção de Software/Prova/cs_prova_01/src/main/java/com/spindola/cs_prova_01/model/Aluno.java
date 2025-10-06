@@ -1,16 +1,20 @@
 package com.spindola.cs_prova_01.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 import com.spindola.cs_prova_01.model.enums.StatusAluno;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,13 +28,15 @@ public class Aluno {
     @Column(nullable = false, length = 11)
     private String cpf;
     @Column(nullable = false)
-    private Date data_nascimento;
+    private LocalDate data_nascimento;
     @Column(nullable = false)
-    private Date data_ingressao;
+    private LocalDate data_ingressao;
     private StatusAluno status;
     @ManyToOne
     @JoinColumn(name = "plano_id")
     private Plano plano;
+    @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<AlunoTreinoVinculo> alunos;
 
     public Aluno() {
     }
@@ -59,19 +65,19 @@ public class Aluno {
         this.cpf = cpf;
     }
 
-    public Date getData_nascimento() {
+    public LocalDate getData_nascimento() {
         return data_nascimento;
     }
 
-    public void setData_nascimento(Date data_nascimento) {
+    public void setData_nascimento(LocalDate data_nascimento) {
         this.data_nascimento = data_nascimento;
     }
 
-    public Date getData_ingressao() {
+    public LocalDate getData_ingressao() {
         return data_ingressao;
     }
 
-    public void setData_ingressao(Date data_ingressao) {
+    public void setData_ingressao(LocalDate data_ingressao) {
         this.data_ingressao = data_ingressao;
     }
 
@@ -89,6 +95,14 @@ public class Aluno {
 
     public void setPlano(Plano plano) {
         this.plano = plano;
+    }
+
+    public List<AlunoTreinoVinculo> getTreinos() {
+        return alunos;
+    }
+
+    public void setTreinos(List<AlunoTreinoVinculo> alunos) {
+        this.alunos = alunos;
     }
 
 }
