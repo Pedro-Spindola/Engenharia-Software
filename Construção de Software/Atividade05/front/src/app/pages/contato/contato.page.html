@@ -1,0 +1,11 @@
+<div class="container">
+    <h2>Novo Contato</h2>
+    <br>
+    <label>Nome: </label>
+    <input type="text" placeholder="Nome" [(ngModel)]="nomeNovoContato">
+    <label>Email: </label>
+    <input type="text" placeholder="Email" [(ngModel)]="emailNovoContato">
+    <label>Telefone: </label>
+    <input type="text" placeholder="Telefone" [(ngModel)]="telefoneNovoContato">
+    <app-button-padrao [nome]="'Adicionar'" (acao)="salvarContato()"></app-button-padrao>
+</div>
