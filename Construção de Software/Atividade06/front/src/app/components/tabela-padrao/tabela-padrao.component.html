@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Cargo</th>
+      <th>Salario</th>
+      <th>Data Admissão</th>
+      <th>Status</th>
+      <th>Editar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of funcionario">
+      <td>{{ item.id }}</td>
+      <td>{{ item.nome }}</td>
+      <td>{{ item.email }}</td>
+      <td>{{ item.cargo }}</td>
+      <td>{{ item.salario }}</td>
+      <td>{{ item.dataAdmissao }}</td>
+      <td>{{ item.status }}</td>
+      <td><app-button-padrao [nome]="'Editar'" (acao)="EditarFuncionario(item.id!)"></app-button-padrao></td>
+    </tr>
+  </tbody>
+</table>
