@@ -8,7 +8,7 @@ export interface FuncionarioRequest {
   email: string;
   cargo: string;
   salario: number;
-  status: boolean;
+  status?: boolean;
 }
 
 export interface Funcionario {
@@ -45,13 +45,17 @@ export class FuncionarioService {
       .pipe(catchError(this.handleError));
   }
 
-  /** 🔹 Atualiza um funcionário existente */
   update(id: number, funcionario: FuncionarioRequest): Observable<Funcionario> {
-    return this.http.put<Funcionario>(`${this.apiUrl}/${id}`, funcionario)
+    return this.http.put<Funcionario>(this.apiUrl, funcionario)
       .pipe(catchError(this.handleError));
   }
 
-  /** 🔹 Busca um funcionário por ID */
+  inativar(id: number): Observable<boolean> {
+    return this.http.put<boolean>(`${this.apiUrl}/${id}`, {}).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   findById(id: number): Observable<Funcionario> {
     return this.http.get<Funcionario>(`${this.apiUrl}/${id}`)
       .pipe(catchError(this.handleError));

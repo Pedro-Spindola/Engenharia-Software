@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ButtonPadraoComponent } from './button-padrao.component';
+import { CadastrarFuncionario } from './cadastrar-funcionario';
 
-describe('ButtonPadraoComponent', () => {
-  let component: ButtonPadraoComponent;
-  let fixture: ComponentFixture<ButtonPadraoComponent>;
+describe('CadastrarFuncionario', () => {
+  let component: CadastrarFuncionario;
+  let fixture: ComponentFixture<CadastrarFuncionario>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ButtonPadraoComponent]
+      imports: [CadastrarFuncionario]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ButtonPadraoComponent);
+    fixture = TestBed.createComponent(CadastrarFuncionario);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

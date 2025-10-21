@@ -1,32 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { Funcionario, FuncionarioRequest, FuncionarioService } from '../../services/funcionario.service';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Funcionario, FuncionarioRequest, FuncionarioService } from '../../services/funcionario.service';
 
 @Component({
-  selector: 'app-funcionario-acao',
+  selector: 'app-editar-funcionario',
   imports: [CommonModule, FormsModule],
-  templateUrl: './funcionario-acao.html',
-  styleUrl: './funcionario-acao.scss'
+  templateUrl: './editar-funcionario.html',
+  styleUrl: './editar-funcionario.scss'
 })
-export class FuncionarioAcao implements OnInit {
+export class EditarFuncionario implements OnInit {
 
-  idFuncionario?: number;
-  nome: string = '';
-  email: string = '';
-  cargo: string = '';
-  salario: number = 0;
-  status: boolean = true;
-  isEditando: boolean = false;
+    idFuncionario: number = 0;
+    nome: string = '';
+    email: string = '';
+    cargo: string = '';
+    salario: number = 0;
+    status: boolean = true;
+    isEditando: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private funcionarioService: FuncionarioService
   ) {}
 
   ngOnInit(): void {
-    // Lê o parâmetro 'id' da rota
     this.route.paramMap.subscribe(params => {
       const idParam = params.get('id');
       if (idParam) {
@@ -52,6 +52,7 @@ export class FuncionarioAcao implements OnInit {
 
   salvar() {
     const funcionario: FuncionarioRequest = {
+      id: this.idFuncionario,
       nome: this.nome,
       email: this.email,
       cargo: this.cargo,
@@ -59,16 +60,16 @@ export class FuncionarioAcao implements OnInit {
       status: this.status
     };
 
-    if (this.isEditando && this.idFuncionario) {
-      this.funcionarioService.update(this.idFuncionario, funcionario).subscribe({
-        next: res => console.log('Atualizado com sucesso', res),
-        error: err => console.error('Erro ao atualizar', err)
-      });
-    } else {
-      this.funcionarioService.create(funcionario).subscribe({
-        next: res => console.log('Criado com sucesso', res),
-        error: err => console.error('Erro ao criar', err)
-      });
-    }
+    this.funcionarioService.update(this.idFuncionario, funcionario).subscribe({
+      next: res => this.router.navigate(['/lista']),
+      error: err => console.error('Erro ao atualizar', err)
+    });
+  }
+
+  inativarFuncionario() {
+    this.funcionarioService.inativar(this.idFuncionario).subscribe({
+      next: res => this.router.navigate(['/lista']),
+      error: err => console.error('Erro ao atualizar', err)
+    });
   }
 }

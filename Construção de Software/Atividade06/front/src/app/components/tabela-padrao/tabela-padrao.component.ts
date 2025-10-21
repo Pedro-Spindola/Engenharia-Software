@@ -2,11 +2,10 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Funcionario, FuncionarioService} from '../../services/funcionario.service';
-import { ButtonPadraoComponent } from "../button-padrao/button-padrao.component";
 
 @Component({
   selector: 'app-tabela-padrao',
-  imports: [CommonModule, ButtonPadraoComponent],
+  imports: [CommonModule],
   templateUrl: './tabela-padrao.component.html',
   styleUrl: './tabela-padrao.component.scss'
 })

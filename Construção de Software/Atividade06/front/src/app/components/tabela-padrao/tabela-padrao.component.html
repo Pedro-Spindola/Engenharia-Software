@@ -20,7 +20,7 @@
       <td>{{ item.salario }}</td>
       <td>{{ item.dataAdmissao }}</td>
       <td>{{ item.status }}</td>
-      <td><app-button-padrao [nome]="'Editar'" (acao)="EditarFuncionario(item.id!)"></app-button-padrao></td>
+      <td><button class="button-editar" (click)="EditarFuncionario(item.id!)">Editar</button></td>
     </tr>
   </tbody>
 </table>
