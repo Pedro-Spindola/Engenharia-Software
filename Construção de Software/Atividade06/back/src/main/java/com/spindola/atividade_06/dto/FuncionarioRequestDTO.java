@@ -8,7 +8,8 @@ public record FuncionarioRequestDTO(
     String email,
     String cargo,
     BigDecimal salario,
-    Boolean status
+    Boolean status,
+    Long id_departamento
 ) {
     
 }

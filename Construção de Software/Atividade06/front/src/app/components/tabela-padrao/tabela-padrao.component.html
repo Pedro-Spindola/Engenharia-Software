@@ -1,3 +1,11 @@
+<div class="lineFiltro">
+  <label for="filtroStatus">Status do Funcionário:</label>
+  <select id="filtroStatus" [(ngModel)]="filtroStatus" (change)="aplicarFiltroStatus()">
+    <option value="todos">Todos</option>
+    <option value="ativo">Ativo</option>
+    <option value="inativo">Inativo</option>
+  </select>
+</div>
 <table>
   <thead>
     <tr>
@@ -8,11 +16,12 @@
       <th>Salario</th>
       <th>Data Admissão</th>
       <th>Status</th>
+      <th>Departamento</th>
       <th>Editar</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of funcionario">
+    <tr *ngFor="let item of funcionariosFiltrados">
       <td>{{ item.id }}</td>
       <td>{{ item.nome }}</td>
       <td>{{ item.email }}</td>
@@ -20,6 +29,7 @@
       <td>{{ item.salario }}</td>
       <td>{{ item.dataAdmissao }}</td>
       <td>{{ item.status }}</td>
+      <td>{{ item.departamentoResponseDTO.nome }}</td>
       <td><button class="button-editar" (click)="EditarFuncionario(item.id!)">Editar</button></td>
     </tr>
   </tbody>

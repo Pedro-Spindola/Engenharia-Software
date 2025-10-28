@@ -15,6 +15,7 @@ export class CadastrarFuncionario {
       email: string = '';
       cargo: string = '';
       salario: number = 0;
+      idDepartamento: number = 0;
 
     constructor(
       private router: Router,
@@ -40,6 +41,7 @@ export class CadastrarFuncionario {
         email: this.email,
         cargo: this.cargo,
         salario: this.salario,
+        id_departamento: this.idDepartamento
       };
 
       this.funcionarioService.create(funcionario).subscribe({

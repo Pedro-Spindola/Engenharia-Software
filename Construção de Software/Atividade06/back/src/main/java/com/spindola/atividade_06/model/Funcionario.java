@@ -5,9 +5,12 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Funcionario {
@@ -26,6 +29,9 @@ public class Funcionario {
     private LocalDate dataAdmissao;
     @Column(nullable = false)
     private Boolean ativo;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "departamento_id", nullable = false)
+    private Departamento departamento;
     
     public Funcionario() {
     }
@@ -33,56 +39,49 @@ public class Funcionario {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
-
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
     public String getCargo() {
         return cargo;
     }
-
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-
     public BigDecimal getSalario() {
         return salario;
     }
-
     public void setSalario(BigDecimal salario) {
         this.salario = salario;
     }
-
     public LocalDate getDataAdmissao() {
         return dataAdmissao;
     }
-
     public void setDataAdmissao(LocalDate dataAdmissao) {
         this.dataAdmissao = dataAdmissao;
     }
-
     public Boolean getAtivo() {
         return ativo;
     }
-
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
+    }
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
     }
 }

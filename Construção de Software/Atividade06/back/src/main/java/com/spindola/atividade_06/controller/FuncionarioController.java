@@ -18,7 +18,7 @@ import com.spindola.atividade_06.dto.FuncionarioResponseDTO;
 import com.spindola.atividade_06.service.FuncionarioServices;
 
 @RestController
-@RequestMapping("api/v1/funcionario")
+@RequestMapping("api/v2/funcionario")
 public class FuncionarioController {
     @Autowired
     FuncionarioServices funcionarioServices;

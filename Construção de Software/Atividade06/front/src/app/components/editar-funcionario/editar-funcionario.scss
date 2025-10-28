@@ -72,4 +72,14 @@
     .button-inativar:hover {
         background-color: #be2727;
     }
+
+    .inativo {
+      opacity: 0.6;
+      pointer-events: none; /* bloqueia interação com inputs */
+    }
+
+    .inativo input {
+      background-color: #f2f2f2;
+      cursor: not-allowed;
+    }
 }

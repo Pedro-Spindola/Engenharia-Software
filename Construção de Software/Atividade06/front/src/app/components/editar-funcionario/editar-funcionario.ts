@@ -17,8 +17,10 @@ export class EditarFuncionario implements OnInit {
     email: string = '';
     cargo: string = '';
     salario: number = 0;
+    idDepartamento: number = 0;
     status: boolean = true;
     isEditando: boolean = false;
+    isInativo: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,6 +47,7 @@ export class EditarFuncionario implements OnInit {
         this.salario = func.salario;
         this.status = func.status;
         this.isEditando = true;
+        this.isInativo = func.status === true;
       },
       error: (err) => console.error('Erro ao carregar funcionário:', err)
     });
@@ -57,7 +60,8 @@ export class EditarFuncionario implements OnInit {
       email: this.email,
       cargo: this.cargo,
       salario: this.salario,
-      status: this.status
+      status: this.status,
+      id_departamento: this.idDepartamento
     };
 
     this.funcionarioService.update(this.idFuncionario, funcionario).subscribe({

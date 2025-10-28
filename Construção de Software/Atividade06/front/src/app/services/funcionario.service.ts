@@ -9,6 +9,7 @@ export interface FuncionarioRequest {
   cargo: string;
   salario: number;
   status?: boolean;
+  id_departamento: number;
 }
 
 export interface Funcionario {
@@ -19,6 +20,14 @@ export interface Funcionario {
   salario: number;
   dataAdmissao: string;
   status: boolean;
+  departamentoResponseDTO: DepartamentoRequest;
+}
+
+export interface DepartamentoRequest{
+  id?: number;
+  nome: String;
+  sigla: String;
+  ativo: boolean;
 }
 
 @Injectable({
@@ -27,7 +36,7 @@ export interface Funcionario {
 
 export class FuncionarioService {
   
-  private readonly apiUrl = 'http://localhost:8080/api/v1/funcionario';
+  private readonly apiUrl = 'http://localhost:8080/api/v2/funcionario';
 
   constructor(private http: HttpClient) { }
 

@@ -3,25 +3,29 @@
 
   <div class="form-group">
     <label>Nome:</label>
-    <input type="text" [(ngModel)]="nome" placeholder="Digite o nome" />
+    <input type="text" [(ngModel)]="nome" [disabled]="!isInativo" placeholder="Digite o nome" />
   </div>
 
   <div class="form-group">
     <label>Email:</label>
-    <input type="email" [(ngModel)]="email" placeholder="Digite o email" />
+    <input type="email" [(ngModel)]="email" [disabled]="!isInativo" placeholder="Digite o email" />
   </div>
 
   <div class="form-group">
     <label>Cargo:</label>
-    <input type="text" [(ngModel)]="cargo" placeholder="Digite o cargo" />
+    <input type="text" [(ngModel)]="cargo" [disabled]="!isInativo" placeholder="Digite o cargo" />
   </div>
 
   <div class="form-group">
     <label>Salário:</label>
-    <input type="number" [(ngModel)]="salario" placeholder="Digite o salário" />
+    <input type="number" [(ngModel)]="salario" [disabled]="!isInativo" placeholder="Digite o salário" />
   </div>
 
   <button class="button-salvar" (click)="salvar()">Salvar</button>
 
-  <button class="button-inativar" (click)="inativarFuncionario()">Inativa Funcionario</button>
+  @if (!isInativo) {
+    <button class="button-inativar" (click)="inativarFuncionario()"> Ativa Funcionário </button>
+  }@else {
+    <button class="button-inativar" (click)="inativarFuncionario()"> Inativar Funcionário </button>
+  }
 </div>
